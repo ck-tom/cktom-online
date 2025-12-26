@@ -6,6 +6,7 @@ resource "cloudflare_pages_project" "astro_site" {
   build_config {
     build_command   = "npm run build"
     destination_dir = "dist"
+    root_dir        = "web"
   }
 
   source {
