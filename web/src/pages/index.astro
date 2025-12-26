@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+
+const features = [
+  {
+    title: 'Push to Deploy',
+    description: 'Completely localized pipelines. Deploy immediately with a single push to your repo.',
+  },
+  {
+    title: 'SSL Certificates',
+    description: 'Automatic SSL certificates for your custom domains. Secure by default.',
+  },
+  {
+    title: 'Simple Queues',
+    description: 'Connect to your database, cache, and other services with zero configuration.',
+  },
+];
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+    <Hero 
+      title="Build faster websites." 
+      subtitle="Astro is a new kind of static site builder that delivers lightning-fast performance with a modern developer experience."
+      ctaText="Get Started"
+      ctaLink="https://astro.build"
+    />
+    <FeatureGrid features={features} />
+	</main>
+</Layout>
