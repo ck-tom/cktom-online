@@ -15,6 +15,10 @@ The goal of `cktom-online` is to build a personal website and blog for "ck-tom".
 - **Infrastructure as Code (IaC)**: [OpenTofu](https://opentofu.org/) - Open-source alternative to Terraform for managing Cloudflare resources.
 - **State Management**: S3-compatible backend (configured in `infrastructure/main.tf`).
 
+### Continuous Integration
+- **Platform**: [GitHub Actions](https://github.com/features/actions) - Automates build verification.
+- **Workflow**: `.github/workflows/build-verify.yml` triggers on pushes and pull requests to `main`, ensuring the site always builds successfully (`npm ci` && `npm run build`).
+
 ## Project Structure
 The project follows a monorepo structure:
 - `web/`: Contains the Astro frontend application.

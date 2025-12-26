@@ -2,7 +2,8 @@
 
 ## [2025-12-25] Initial Setup & Git Configuration
 - **Action**: Configured Global Git User.
-- **Details**: Set username to `ck-tom` and email to `git@cktom.online` to ensure commits are correctly attributed.
+- **Details**: Set username to `ck-tom` and email to `git
+@cktom.online` to ensure commits are correctly attributed.
 - **Context**: Ensuring privacy and correct identity for the repository.
 
 ## [2025-12-25] Astro Landing Page Setup
@@ -36,3 +37,11 @@
 - **Action**: Started comprehensive documentation.
 - **Details**: Created this `HISTORY.md`, along with `OVERVIEW.md`, `DECISIONS.md`, and `DEAD_ENDS.md`.
 - **Reasoning**: To maintain a "brain" for the project and facilitate future blog posts.
+
+## [2025-12-26] Continuous Integration Setup
+- **Action**: Added build verification workflow.
+- **Details**:
+    - Created `.github/workflows/build-verify.yml`.
+    - Configured to run `npm ci` and `npm run build` on `push` and `pull_request` to `main`.
+    - Verified build commands locally.
+- **Results**: Ensures the `main` branch always remains in a buildable state.
