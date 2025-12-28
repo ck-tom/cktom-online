@@ -10,6 +10,8 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+@plugin "@tailwindcss/typography";
+
 @layer base {
   html {
     scroll-behavior: smooth;
