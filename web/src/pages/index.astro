@@ -1,22 +1,23 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const recentPosts = posts.slice(0, 3);
+const homepage = await getEntry('homepage', 'index');
 ---
 
 <Layout title="CK-TOM | Software Engineer">
 	<section class="py-20 md:py-32">
-		<h1 class="font-mono text-xl md:text-2xl text-neutral-500 mb-4">Hello, I'm CK-TOM.</h1>
+		<h1 class="font-mono text-xl md:text-2xl text-neutral-500 mb-4">{homepage.data.greeting}</h1>
 		<p class="text-4xl md:text-6xl font-bold tracking-tight text-neutral-900 leading-tight">
-			Software Engineer building reliable systems and exploring new technologies.
+			{homepage.data.headline}
 		</p>
 		<p class="mt-8 text-lg text-neutral-600 max-w-2xl">
-			Welcome to my digital garden. Here I write about coding, design, and the things I'm learning.
+			{homepage.data.intro}
 		</p>
 	</section>
 

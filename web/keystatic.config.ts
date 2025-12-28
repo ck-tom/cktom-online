@@ -1,5 +1,5 @@
 
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
     storage: {
@@ -59,6 +59,17 @@ export default config({
                     dividers: true,
                     links: true,
                 }),
+            },
+        }),
+    },
+    singletons: {
+        homepage: singleton({
+            label: 'Home Page',
+            path: 'src/content/homepage/index',
+            schema: {
+                greeting: fields.text({ label: 'Greeting' }),
+                headline: fields.text({ label: 'Headline', multiline: true }),
+                intro: fields.text({ label: 'Intro Text', multiline: true }),
             },
         }),
     },
