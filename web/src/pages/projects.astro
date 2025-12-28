@@ -1,31 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const projects = [
-    {
-        title: "Project Alpha",
-        description:
-            "A cutting-edge web application built with Astro and React.",
-        link: "#",
-        tags: ["Astro", "React", "TypeScript"],
-        year: "2024",
-    },
-    {
-        title: "Open Source Tool",
-        description: "A CLI tool for developer productivity, written in Rust.",
-        link: "#",
-        tags: ["Rust", "CLI"],
-        year: "2023",
-    },
-    {
-        title: "Design System",
-        description:
-            "A comprehensive design system for enterprise applications.",
-        link: "#",
-        tags: ["Figma", "CSS", "Storybook"],
-        year: "2023",
-    },
-];
+const projects = (await getCollection("projects")).sort(
+    (a, b) => parseInt(b.data.year) - parseInt(a.data.year),
+);
 ---
 
 <Layout title="Projects | CK-TOM">
@@ -44,20 +23,20 @@ const projects = [
                     <div class="group relative flex flex-col items-start border border-neutral-200 rounded-lg p-6 hover:border-neutral-400 transition-colors bg-white">
                         <div class="flex justify-between w-full items-start mb-4">
                             <h2 class="text-xl font-bold text-neutral-900 group-hover:text-neutral-600 transition-colors">
-                                <a href={project.link}>
+                                <a href={project.data.link}>
                                     <span class="absolute inset-0" />
-                                    {project.title}
+                                    {project.data.title}
                                 </a>
                             </h2>
                             <span class="text-sm font-mono text-neutral-500">
-                                {project.year}
+                                {project.data.year}
                             </span>
                         </div>
                         <p class="text-base text-neutral-600 mb-6 flex-grow">
-                            {project.description}
+                            {project.data.description}
                         </p>
                         <div class="flex flex-wrap gap-2 relative z-10">
-                            {project.tags.map((tag) => (
+                            {project.data.tags.map((tag) => (
                                 <span class="inline-flex items-center rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 ring-1 ring-inset ring-neutral-500/10">
                                     {tag}
                                 </span>

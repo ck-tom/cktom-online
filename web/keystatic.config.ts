@@ -1,0 +1,65 @@
+
+import { config, fields, collection } from '@keystatic/core';
+
+export default config({
+    storage: {
+        kind: 'local',
+    },
+    collections: {
+        blog: collection({
+            label: 'Blog',
+            slugField: 'title',
+            path: 'src/content/blog/*',
+            format: { contentField: 'content' },
+            schema: {
+                title: fields.slug({ name: { label: 'Title' } }),
+                description: fields.text({ label: 'Description', multiline: true }),
+                pubDate: fields.date({ label: 'Published Date' }),
+                updatedDate: fields.date({ label: 'Updated Date' }),
+                heroImage: fields.text({ label: 'Hero Image path' }),
+                tags: fields.array(
+                    fields.text({ label: 'Tag' }),
+                    {
+                        label: 'Tags',
+                        itemLabel: props => props.value
+                    }
+                ),
+                content: fields.document({
+                    label: 'Content',
+                    formatting: true,
+                    dividers: true,
+                    links: true,
+                    images: {
+                        directory: 'public/images/posts',
+                        publicPath: '/images/posts/',
+                    },
+                }),
+            },
+        }),
+        projects: collection({
+            label: 'Projects',
+            slugField: 'title',
+            path: 'src/content/projects/*',
+            format: { contentField: 'content' },
+            schema: {
+                title: fields.slug({ name: { label: 'Title' } }),
+                description: fields.text({ label: 'Description', multiline: true }),
+                year: fields.text({ label: 'Year' }),
+                link: fields.url({ label: 'Project Link' }),
+                tags: fields.array(
+                    fields.text({ label: 'Tag' }),
+                    {
+                        label: 'Tags',
+                        itemLabel: props => props.value
+                    }
+                ),
+                content: fields.document({
+                    label: 'Content',
+                    formatting: true,
+                    dividers: true,
+                    links: true,
+                }),
+            },
+        }),
+    },
+});
