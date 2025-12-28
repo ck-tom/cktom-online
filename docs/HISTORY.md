@@ -2,8 +2,7 @@
 
 ## [2025-12-25] Initial Setup & Git Configuration
 - **Action**: Configured Global Git User.
-- **Details**: Set username to `ck-tom` and email to `git
-@cktom.online` to ensure commits are correctly attributed.
+- **Details**: Set username to `ck-tom` and email to `git@cktom.online` to ensure commits are correctly attributed.
 - **Context**: Ensuring privacy and correct identity for the repository.
 
 ## [2025-12-25] Astro Landing Page Setup
@@ -45,3 +44,16 @@
     - Configured to run `npm ci` and `npm run build` on `push` and `pull_request` to `main`.
     - Verified build commands locally.
 - **Results**: Ensures the `main` branch always remains in a buildable state.
+
+## [2025-12-27] Professional Blog Design Implementation
+- **Action**: Transformed placeholder template into a full professional blog.
+- **Details**:
+    - **Design System**: Implemented a minimalist monochrome theme using Tailwind CSS v4 variables.
+    - **Typography**: Integrated `Inter` (sans-serif) and `JetBrains Mono` (monospace).
+    - **Structure**: Created comprehensive site structure:
+        - `Home`: Custom hero and recent posts.
+        - `Blog`: Listing and Detail pages using Astro Content Collections.
+        - `Projects`: Portfolio showcase.
+        - `About` & `Contact`: Static informational pages.
+    - **Features**: Added syntax highlighting via `@tailwindcss/typography` and tag support.
+- **Results**: The site is now functionally complete and ready for real content.
