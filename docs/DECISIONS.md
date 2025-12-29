@@ -47,3 +47,12 @@
 - **Reasoning**:
     - **Clarity**: distinct sections filter visitors based on intent (hiring vs reading).
     - **Discoverability**: a "Recent Posts" on the home page keeps the site feeling alive.
+
+## 7. Headless CMS (Keystatic)
+- **Decision**: Use Keystatic for content management.
+- **Alternatives Considered**: Netlify CMS (Decap), TinaCMS, Sanity.
+- **Reasoning**:
+    - **Offline First**: Runs entirely locally (`npm run dev`), satisfying the requirement for "local offline" editing.
+    - **Git-Backed**: Saves content directly to the file system (Markdown/JSON/YAML), leveraging existing Git workflows.
+    - **Astro Integration**: Native support for Astro Content Collections via the `@keystatic/astro` integration.
+    - **Singleton Support**: Allows editing singular pages (like the Home Page) in addition to collections (Blog/Projects).

@@ -57,3 +57,12 @@
         - `About` & `Contact`: Static informational pages.
     - **Features**: Added syntax highlighting via `@tailwindcss/typography` and tag support.
 - **Results**: The site is now functionally complete and ready for real content.
+
+## [2025-12-27] Local Headless CMS Integration
+- **Action**: Integrated Keystatic for local offline content management.
+- **Details**:
+    - **Installation**: Configured `@keystatic/astro` with React.
+    - **Collections**: Mapped `Blog` and `Projects` to Keystatic collections for easy list management.
+    - **Singletons**: Implemented a `Homepage` singleton to allow editing the Hero text (Greeting, Headline, Intro) via the CMS.
+    - **Adapter**: Switched to `@astrojs/cloudflare` with `output: 'static'` to support the necessary server routes for the Admin UI while maintaining static builds.
+- **Impact**: Enables non-technical editing of site content without touching code, fully offline and version controlled.
