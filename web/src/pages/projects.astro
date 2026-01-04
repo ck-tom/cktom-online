@@ -1,0 +1,50 @@
+w---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => parseInt(b.data.year) - parseInt(a.data.year),
+);
+---
+
+<Layout title="Projects | CK-TOM">
+    <section class="py-16 md:py-20">
+        <h1 class="text-4xl font-bold tracking-tight text-neutral-900 mb-8">
+            Projects
+        </h1>
+        <p class="text-lg text-neutral-600 mb-12 max-w-2xl">
+            A selection of projects I've worked on, ranging from web
+            applications to developer tools.
+        </p>
+
+        <div class="grid gap-8 md:grid-cols-2">
+            {
+                projects.map((project) => (
+                    <div class="group relative flex flex-col items-start border border-neutral-200 rounded-lg p-6 hover:border-neutral-400 transition-colors bg-white">
+                        <div class="flex justify-between w-full items-start mb-4">
+                            <h2 class="text-xl font-bold text-neutral-900 group-hover:text-neutral-600 transition-colors">
+                                <a href={project.data.link}>
+                                    <span class="absolute inset-0" />
+                                    {project.data.title}
+                                </a>
+                            </h2>
+                            <span class="text-sm font-mono text-neutral-500">
+                                {project.data.year}
+                            </span>
+                        </div>
+                        <p class="text-base text-neutral-600 mb-6 flex-grow">
+                            {project.data.description}
+                        </p>
+                        <div class="flex flex-wrap gap-2 relative z-10">
+                            {project.data.tags.map((tag) => (
+                                <span class="inline-flex items-center rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-700 ring-1 ring-inset ring-neutral-500/10">
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</Layout>

@@ -1,32 +1,62 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import FeatureGrid from '../components/FeatureGrid.astro';
+import { getCollection, getEntry } from 'astro:content';
 
-const features = [
-  {
-    title: 'Push to Deploy',
-    description: 'Completely localized pipelines. Deploy immediately with a single push to your repo.',
-  },
-  {
-    title: 'SSL Certificates',
-    description: 'Automatic SSL certificates for your custom domains. Secure by default.',
-  },
-  {
-    title: 'Simple Queues',
-    description: 'Connect to your database, cache, and other services with zero configuration.',
-  },
-];
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const recentPosts = posts.slice(0, 3);
+const homepage = await getEntry('homepage', 'index');
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-    <Hero 
-      title="Build faster websites." 
-      subtitle="Astro is a new kind of static site builder that delivers lightning-fast performance with a modern developer experience."
-      ctaText="Get Started"
-      ctaLink="https://astro.build"
-    />
-    <FeatureGrid features={features} />
-	</main>
+<Layout title="CK-TOM | Software Engineer">
+	<section class="py-20 md:py-32">
+		<h1 class="font-mono text-xl md:text-2xl text-neutral-500 mb-4">{homepage.data.greeting}</h1>
+		<p class="text-4xl md:text-6xl font-bold tracking-tight text-neutral-900 leading-tight">
+			{homepage.data.headline}
+		</p>
+		<p class="mt-8 text-lg text-neutral-600 max-w-2xl">
+			{homepage.data.intro}
+		</p>
+	</section>
+
+	<section class="py-12 border-t border-neutral-200">
+		<div class="flex items-center justify-between mb-8">
+			<h2 class="text-2xl font-bold text-neutral-900">Recent Posts</h2>
+			<a href="/blog" class="text-sm font-medium text-neutral-600 hover:text-neutral-900 font-mono">View all -></a>
+		</div>
+
+		<div class="grid gap-12">
+			{recentPosts.map((post) => (
+				<article class="group">
+					<a href={`/blog/${post.slug}/`} class="block">
+						<h3 class="text-xl font-semibold text-neutral-900 group-hover:text-neutral-600 transition-colors">
+							{post.data.title}
+						</h3>
+						<div class="flex items-center gap-3 mt-2 text-sm text-neutral-500 font-mono">
+							<time datetime={post.data.pubDate.toISOString()}>
+								{post.data.pubDate.toLocaleDateString('en-us', {
+									year: 'numeric',
+									month: 'short',
+									day: 'numeric',
+								})}
+							</time>
+                            {post.data.tags.length > 0 && (
+                                <span>/</span>
+                                <span class="text-neutral-400">{post.data.tags.join(', ')}</span>
+                            )}
+						</div>
+						<p class="mt-3 text-neutral-600 leading-relaxed">
+							{post.data.description}
+						</p>
+					</a>
+				</article>
+			))}
+            
+            {recentPosts.length === 0 && (
+                <p class="text-neutral-500 italic">No posts found.</p>
+            )}
+		</div>
+	</section>
 </Layout>

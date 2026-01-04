@@ -28,3 +28,31 @@
     - **Integration**: Excellent DNS and Edge integration.
     - **Speed**: Global CDN ensures fast load times.
     - **Cost**: Generous free tier for personal projects.
+
+## 5. Design System & Aesthetics
+- **Decision**: Minimalist monochrome palette with focus on typography.
+    - **Font Stack**: `Inter` for UI/Body, `JetBrains Mono` for code and technical elements.
+    - **Colors**: Neutral gray scale (50-900) to ensure high contrast and professional look.
+- **Reasoning**:
+    - **Timelessness**: Monochrome designs tend to age better than trend-focused color palettes.
+    - **Readability**: High contrast and clean typography prioritize the reading experience.
+    - **Professionalism**: avoiding "flashy" elements to focus on the engineering content.
+
+## 6. Content Strategy & Architecture
+- **Decision**: Explicit separation of Blog (time-sensitive) and Projects (portfolio).
+- **Structure**:
+    - **Home**: Hybrid approach with a personal Hero section and a list of recent posts.
+    - **Blog**: Standard reverse-chronological listing with tagging support.
+    - **Projects**: Dedicated section for showcasing work (Portfolio).
+- **Reasoning**:
+    - **Clarity**: distinct sections filter visitors based on intent (hiring vs reading).
+    - **Discoverability**: a "Recent Posts" on the home page keeps the site feeling alive.
+
+## 7. Headless CMS (Keystatic)
+- **Decision**: Use Keystatic for content management.
+- **Alternatives Considered**: Netlify CMS (Decap), TinaCMS, Sanity.
+- **Reasoning**:
+    - **Offline First**: Runs entirely locally (`npm run dev`), satisfying the requirement for "local offline" editing.
+    - **Git-Backed**: Saves content directly to the file system (Markdown/JSON/YAML), leveraging existing Git workflows.
+    - **Astro Integration**: Native support for Astro Content Collections via the `@keystatic/astro` integration.
+    - **Singleton Support**: Allows editing singular pages (like the Home Page) in addition to collections (Blog/Projects).
