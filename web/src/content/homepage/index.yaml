@@ -1,7 +1,7 @@
-greeting: npm run build
-headline: >-
+greeting: This is my website. There are many like it but this one is mine.
+headline: npm run build
+intro: >-
   [astro] Error: Invalid Prop Type.
 
-  Expected 'String' for <Role />, but received 'Array<Technician, SysAdmin,
-  Consultant, Tinker>'.
-intro: $PLACEHOLDER_TEXT_UNTIL_I_CAN_THINK_OF_SOMETHING_BETTER
+  Expected 'String' for <Role />, but received 'Array<Tinker, Technician,
+  SysAdmin, Consultant>'.
