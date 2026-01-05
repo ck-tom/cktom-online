@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 	<section class="py-16 md:py-20">
 		<h1 class="text-4xl font-bold tracking-tight text-neutral-900 mb-8">Blog</h1>
         <p class="text-lg text-neutral-600 mb-12 max-w-2xl">
-            Thoughts, tutorials, and updates on my journey in software engineering.
+        Posts go here.
         </p>
 
 		<div class="grid gap-12">
@@ -36,7 +36,7 @@ const posts = (await getCollection('blog')).sort(
 						{post.data.description}
 					</p>
                     <div class="mt-4 flex items-center gap-4">
-                        <span class="text-sm font-medium text-neutral-900 font-mono group-hover:text-neutral-600 transition-colors">Read article &rarr;</span>
+                        <span class="text-sm font-medium text-neutral-900 font-mono group-hover:text-neutral-600 transition-colors">Read &rarr;</span>
                         {post.data.tags.length > 0 && (
                             <div class="flex gap-2 relative z-10">
                                 {post.data.tags.map(tag => (

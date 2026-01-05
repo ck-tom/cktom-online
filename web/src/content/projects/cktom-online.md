@@ -1,5 +1,5 @@
 ---
-title: 'Portfolio Website'
+title: 'Projects'
 description: 'The personal website and blog you are looking at right now.'
 year: '2025'
 link: 'https://github.com/ck-tom/cktom-online'
