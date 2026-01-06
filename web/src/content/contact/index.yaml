@@ -1,15 +1,10 @@
 title: Contact
-intro: >-
-  I'm always open to discussing new projects, opportunities, or just chatting
-  about technology.
+intro: Let's talk about it.
 email: hello@cktom.online
 socialLinks:
   - platform: GitHub
     url: '#'
     handle: '@ck-tom'
-  - platform: Twitter
-    url: '#'
-    handle: '@ck_tom'
   - platform: LinkedIn
     url: '#'
     handle: /in/cktom
