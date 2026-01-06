@@ -1,15 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const contact = await getEntry("contact", "index");
+if (!contact) {
+    throw new Error("Contact page data not found");
+}
+const { title, intro, email, socialLinks } = contact.data;
 ---
 
-<Layout title="Contact | CK-TOM">
+<Layout title={`${title} | CK-TOM`}>
     <section class="py-16 md:py-20">
         <h1 class="text-4xl font-bold tracking-tight text-neutral-900 mb-8">
-            Contact
+            {title}
         </h1>
         <p class="text-lg text-neutral-600 mb-12 max-w-2xl">
-            I'm always open to discussing new projects, opportunities, or just
-            chatting about technology.
+            {intro}
         </p>
 
         <div class="grid gap-8 max-w-lg">
@@ -17,9 +23,9 @@ import Layout from "../layouts/Layout.astro";
                 <h2 class="text-xl font-bold text-neutral-900 mb-4">Email</h2>
                 <p class="text-neutral-600 mb-2">For general inquiries:</p>
                 <a
-                    href="mailto:hello@cktom.online"
+                    href={`mailto:${email}`}
                     class="text-neutral-900 font-medium hover:underline"
-                    >hello@cktom.online</a
+                    >{email}</a
                 >
             </div>
 
@@ -28,27 +34,19 @@ import Layout from "../layouts/Layout.astro";
                     Social Media
                 </h2>
                 <div class="flex flex-col gap-3">
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 text-neutral-600 hover:text-neutral-900 transition-colors"
-                    >
-                        <span class="font-medium">GitHub</span>
-                        <span class="text-neutral-400 text-sm">@ck-tom</span>
-                    </a>
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 text-neutral-600 hover:text-neutral-900 transition-colors"
-                    >
-                        <span class="font-medium">Twitter</span>
-                        <span class="text-neutral-400 text-sm">@ck_tom</span>
-                    </a>
-                    <a
-                        href="#"
-                        class="flex items-center gap-3 text-neutral-600 hover:text-neutral-900 transition-colors"
-                    >
-                        <span class="font-medium">LinkedIn</span>
-                        <span class="text-neutral-400 text-sm">/in/cktom</span>
-                    </a>
+                    {
+                        socialLinks.map((link) => (
+                            <a
+                                href={link.url}
+                                class="flex items-center gap-3 text-neutral-600 hover:text-neutral-900 transition-colors"
+                            >
+                                <span class="font-medium">{link.platform}</span>
+                                <span class="text-neutral-400 text-sm">
+                                    {link.handle}
+                                </span>
+                            </a>
+                        ))
+                    }
                 </div>
             </div>
         </div>

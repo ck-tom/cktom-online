@@ -7,6 +7,8 @@ import keystatic from '@keystatic/astro';
 
 import cloudflare from '@astrojs/cloudflare';
 
+import markdoc from '@astrojs/markdoc';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
@@ -14,5 +16,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [react(), keystatic()]
+  integrations: [react(), keystatic(), markdoc()]
 });
