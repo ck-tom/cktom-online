@@ -56,3 +56,11 @@
     - **Git-Backed**: Saves content directly to the file system (Markdown/JSON/YAML), leveraging existing Git workflows.
     - **Astro Integration**: Native support for Astro Content Collections via the `@keystatic/astro` integration.
     - **Singleton Support**: Allows editing singular pages (like the Home Page) in addition to collections (Blog/Projects).
+
+## 8. Document Format for Keystatic
+- **Decision**: Adopt `@astrojs/markdoc` to support `.mdoc` files.
+- **Alternatives Considered**: Renaming files to `.md`, forcing Keystatic to export Markdown.
+- **Reasoning**:
+    - **Markdoc Features**: Preserves full fidelity of Keystatic's structured document editor.
+    - **User Experience**: "Just works" for content editors without manual file intervention.
+    - **Sustainability**: Prevents edit wars where CMS reverts file extensions.

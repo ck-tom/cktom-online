@@ -35,4 +35,27 @@ const homepage = defineCollection({
     }),
 });
 
-export const collections = { blog, projects, homepage };
+const about = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+    }),
+});
+
+const contact = defineCollection({
+    type: 'data',
+    schema: z.object({
+        title: z.string(),
+        intro: z.string(),
+        email: z.string(),
+        socialLinks: z.array(
+            z.object({
+                platform: z.string(),
+                url: z.string(),
+                handle: z.string(),
+            })
+        ),
+    }),
+});
+
+export const collections = { blog, projects, homepage, about, contact };

@@ -66,3 +66,11 @@
     - **Singletons**: Implemented a `Homepage` singleton to allow editing the Hero text (Greeting, Headline, Intro) via the CMS.
     - **Adapter**: Switched to `@astrojs/cloudflare` with `output: 'static'` to support the necessary server routes for the Admin UI while maintaining static builds.
 - **Impact**: Enables non-technical editing of site content without touching code, fully offline and version controlled.
+
+## [2026-01-06] Keystatic Singletons & Markdoc Adoption
+- **Action**: Migrated About and Contact pages to Keystatic Singletons.
+- **Details**:
+    - **Singletons**: Converted `about.astro` and `contact.astro` to fetch data from Keystatic.
+    - **Integration**: Installed `@astrojs/markdoc` to handle Keystatic's native `.mdoc` format.
+    - **Documentation**: Created `web/docs/adr/001-keystatic-markdoc.md` detailing the decision process.
+- **Context**: Enabling full CMS control over static pages while resolving file format conflicts between Astro and Keystatic. Keystatic was saving files as `.mdoc` but Astro was looking for `.md` so wasn't rendering the pages. Manually renaming files to `.md` let Astro render them, but would need to be manually done every time edited in keystatic. Adding markdoc support allowed Keystatic to save files as `.mdoc` and Astro to render them.

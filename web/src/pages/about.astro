@@ -1,51 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const about = await getEntry("about", "index");
+if (!about) {
+    throw new Error("About page data not found");
+}
+const { Content } = await about.render();
 ---
 
-<Layout title="About | CK-TOM">
+<Layout title={`${about.data.title} | CK-TOM`}>
     <section class="py-16 md:py-20">
         <h1 class="text-4xl font-bold tracking-tight text-neutral-900 mb-8">
-            About Me
+            {about.data.title}
         </h1>
 
         <div class="prose prose-neutral max-w-none prose-lg">
-            <p>
-                Hello! I'm CK-TOM, a software engineer with a passion for
-                building clean, efficient, and user-friendly applications.
-            </p>
-            <p>
-                My journey began with a curiosity for how things work under the
-                hood, leading me to explore various programming languages and
-                technologies. I specialize in web development, but I also enjoy
-                dabbling in systems programming and design.
-            </p>
-            <p>
-                When I'm not coding, you can find me [insert hobbies here],
-                reading tech blogs, or contributing to open source projects.
-            </p>
-
-            <h2>Experience</h2>
-            <ul>
-                <li>
-                    <strong>Senior Engineer at Tech Corp</strong> (2022 - Present)
-                    - Leading frontend architecture and team mentoring.
-                </li>
-                <li>
-                    <strong>Full Stack Developer at Startup Inc</strong> (2019 - 2022)
-                    - Built MVP and scaled application to 100k users.
-                </li>
-            </ul>
-
-            <h2>Tech Stack</h2>
-            <p>
-                I work with a variety of tools, but my current favorites
-                include:
-            </p>
-            <ul>
-                <li><strong>Languages:</strong> TypeScript, Rust, Python</li>
-                <li><strong>Frontend:</strong> React, Astro, Tailwind CSS</li>
-                <li><strong>Backend:</strong> Node.js, PostgreSQL, Docker</li>
-            </ul>
+            <Content />
         </div>
     </section>
 </Layout>

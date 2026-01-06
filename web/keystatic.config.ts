@@ -72,5 +72,42 @@ export default config({
                 intro: fields.text({ label: 'Intro Text', multiline: true }),
             },
         }),
+        about: singleton({
+            label: 'About Page',
+            path: 'src/content/about/index',
+            schema: {
+                title: fields.text({ label: 'Title' }),
+                content: fields.document({
+                    label: 'Content',
+                    formatting: true,
+                    dividers: true,
+                    links: true,
+                    images: {
+                        directory: 'public/images/about',
+                        publicPath: '/images/about/',
+                    },
+                }),
+            },
+        }),
+        contact: singleton({
+            label: 'Contact Page',
+            path: 'src/content/contact/index',
+            schema: {
+                title: fields.text({ label: 'Title' }),
+                intro: fields.text({ label: 'Intro Text', multiline: true }),
+                email: fields.text({ label: 'Email Address' }),
+                socialLinks: fields.array(
+                    fields.object({
+                        platform: fields.text({ label: 'Platform Name' }),
+                        url: fields.url({ label: 'Profile URL' }),
+                        handle: fields.text({ label: 'Handle/Username' }),
+                    }),
+                    {
+                        label: 'Social Links',
+                        itemLabel: (props) => props.fields.platform.value || 'Link',
+                    }
+                ),
+            },
+        }),
     },
 });
