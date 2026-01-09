@@ -17,7 +17,6 @@ variable "cloudflare_zone_id" {
 variable "project_name" {
   description = "The name of the Cloudflare Pages project"
   type        = string
-  default     = "my-astro-site"
 }
 
 variable "production_branch" {

@@ -1,4 +1,4 @@
-resource "cloudflare_pages_project" "astro_site" {
+resource "cloudflare_pages_project" "cktom-online" {
   account_id        = var.cloudflare_account_id
   name              = var.project_name
   production_branch = var.production_branch
@@ -27,14 +27,14 @@ resource "cloudflare_pages_project" "astro_site" {
 
 resource "cloudflare_pages_domain" "custom_domain" {
   account_id   = var.cloudflare_account_id
-  project_name = cloudflare_pages_project.astro_site.name
+  project_name = cloudflare_pages_project.cktom-online.name
   domain       = var.custom_domain
 }
 
 resource "cloudflare_record" "cname" {
   zone_id = var.cloudflare_zone_id
   name    = var.custom_domain
-  content = cloudflare_pages_project.astro_site.subdomain
+  content = cloudflare_pages_project.cktom-online.subdomain
   type    = "CNAME"
   proxied = true
 }

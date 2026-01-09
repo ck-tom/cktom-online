@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket                      = "terraform-state"
-    key                         = "astro-site/terraform.tfstate"
+    key                         = "cktom-online/terraform.tfstate"
     region                      = "auto"
     skip_credentials_validation = true
     skip_metadata_api_check     = true
