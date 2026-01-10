@@ -1,4 +1,5 @@
 # Project History
+This is an account of the history of the project, primarily focused on changes to the codebase, not the content.
 
 ## [2025-12-25] Initial Setup & Git Configuration
 - **Action**: Configured Global Git User.
@@ -74,3 +75,11 @@
     - **Integration**: Installed `@astrojs/markdoc` to handle Keystatic's native `.mdoc` format.
     - **Documentation**: Created `web/docs/adr/001-keystatic-markdoc.md` detailing the decision process.
 - **Context**: Enabling full CMS control over static pages while resolving file format conflicts between Astro and Keystatic. Keystatic was saving files as `.mdoc` but Astro was looking for `.md` so wasn't rendering the pages. Manually renaming files to `.md` let Astro render them, but would need to be manually done every time edited in keystatic. Adding markdoc support allowed Keystatic to save files as `.mdoc` and Astro to render them.
+
+## [2026-01-09] Domain Rebrand
+- **Action**: Rebranded the domain from `cktom.online` to `itschey.net`.
+- **Details**:
+    - **DNS**: Updated Cloudflare DNS records to point to the new domain.
+    - **Content**: Updated all references to the old domain in the codebase.
+    - **Infrastructure**: Updated Cloudflare Pages project name and domain, github project name and url.
+- **Impact**: Moving to the more clever domain name `itschey.net`. Because my name is *Cheyne Tom* so **its CheyneT**om, get it?

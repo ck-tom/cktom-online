@@ -1,10 +1,10 @@
 title: Contact
 intro: Let's talk about it.
-email: hello@cktom.online
+email: contact@itschey.net
 socialLinks:
   - platform: GitHub
-    url: '#'
-    handle: '@ck-tom'
+    url: https://github.com/cheynetom
+    handle: '@cheynetom'
   - platform: LinkedIn
-    url: '#'
+    url: https://linkedin.com/in/cheyne-tom
     handle: /in/cheyne-tom

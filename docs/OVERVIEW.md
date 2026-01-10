@@ -1,7 +1,7 @@
 # Project Overview
 
 ## Goal
-The goal of `cktom-online` is to build a personal website and blog for "ck-tom". It serves as a playground for modern web technologies and a platform to share knowledge.
+The goal of ~~`cktom-online`~~ [itschey.net](https://itschey.net) is to build a personal website and blog for Cheyne Tom. 
 
 ## Technology Stack
 
@@ -22,5 +22,6 @@ The goal of `cktom-online` is to build a personal website and blog for "ck-tom".
 ## Project Structure
 The project follows a monorepo structure:
 - `web/`: Contains the Astro frontend application.
+- `web/src/content/`: Contains the content for the blog and projects.
 - `infrastructure/`: Contains OpenTofu configuration for provisioning Cloudflare resources.
 - `docs/`: Project documentation (this folder).
