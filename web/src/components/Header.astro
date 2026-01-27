@@ -36,8 +36,13 @@ const navItems = [
             }
         </nav>
 
-        <!-- Mobile Menu Button Placeholder (can be expanded later) -->
-        <button class="md:hidden p-2 text-neutral-600 hover:text-neutral-900">
+        <!-- Mobile Menu Button -->
+        <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-neutral-600 hover:text-neutral-900"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+        >
             <span class="sr-only">Open menu</span>
             <svg
                 class="h-6 w-6"
@@ -53,4 +58,34 @@ const navItems = [
             </svg>
         </button>
     </div>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-neutral-200 bg-neutral-50 px-4 py-6"
+    >
+        <nav class="flex flex-col gap-4">
+            {
+                navItems.map((item) => (
+                    <a
+                        href={item.href}
+                        class="text-base font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
 </header>
+
+<script>
+    import { setupMenu } from "../scripts/menu";
+
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuBtn && mobileMenu) {
+        setupMenu(menuBtn, mobileMenu);
+    }
+</script>

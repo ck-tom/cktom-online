@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import config from '../keystatic.config';
+import config from '../../keystatic.config';
 
 describe('Keystatic Configuration', () => {
     it('should have a local storage kind', () => {
